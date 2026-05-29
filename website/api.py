@@ -63,3 +63,30 @@ def get_note(id):
         "data": note.data,
         "user_id": note.user_id
     }), 200
+
+@api.route('/notes/<int:id>', methods=['PUT'])
+def update_note(id):
+
+    note = Note.query.get(id)
+
+    if not note:
+        return jsonify({
+            "error": "Note not found"
+        }), 404
+
+    data = request.get_json()
+
+    if not data.get("data"):
+        return jsonify({
+            "error": "Note data is required"
+        }), 400
+
+    note.data = data["data"]
+
+    db.session.commit()
+
+    return jsonify({
+        "message": "Note updated successfully",
+        "id": note.id,
+        "data": note.data
+    }), 200
