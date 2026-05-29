@@ -90,3 +90,19 @@ def update_note(id):
         "id": note.id,
         "data": note.data
     }), 200
+
+@api.route('/notes/<int:id>', methods=['DELETE'])
+def delete_note(id):
+    note = Note.query.get(id)
+
+    if not note:
+        return jsonify({
+            "error": "Note not found"
+        }), 404
+
+    db.session.delete(note)
+    db.session.commit()
+
+    return jsonify({
+        "message": "Note deleted successfully"
+    }), 200
