@@ -1,37 +1,49 @@
-# Flask Web App Tutorial
+# Notes REST API (Flask Enhancement Project)
 
-## Setup & Installation
+## Project Overview
+This project is an enhancement of an existing Flask-based Notes web application. The original system allows users to create and manage notes through a web interface. This enhancement introduces a RESTful API that enables programmatic access to notes using JSON-based communication.
 
-Make sure you have the latest version of Python installed.
+The API implements full CRUD (Create, Read, Update, Delete) functionality.
 
-```bash
-git clone <repo-url>
-```
+---
 
-```bash
-pip install -r requirements.txt
-```
+## Technology Stack
+- Python
+- Flask
+- Flask-SQLAlchemy
+- SQLite
+- Pytest (for testing)
 
-## Running The App
+---
 
-```bash
-python main.py
-```
+## Features Implemented
 
-## Viewing The App
+### REST API for Notes
+The system now supports:
 
-Go to `http://127.0.0.1:5000`
+- Create a note
+- Retrieve all notes
+- Retrieve a single note
+- Update a note
+- Delete a note
 
+---
 
-# 💻 Launch Your Software Development Career Today!  
+## API Endpoints
 
-🎓 **No degree? No problem!** My program equips you with everything you need to break into tech and land an entry-level software development role.  
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/notes` | Get all notes |
+| GET | `/api/notes/<id>` | Get a specific note |
+| POST | `/api/notes` | Create a new note |
+| PUT | `/api/notes/<id>` | Update a note |
+| DELETE | `/api/notes/<id>` | Delete a note |
 
-🚀 **Why Join?**  
-- 💼 **$70k+ starting salary potential**  
-- 🕐 **Self-paced:** Complete on your own time  
-- 🤑 **Affordable:** Low risk compared to expensive bootcamps or degrees
-- 🎯 **45,000+ job openings** in the market  
+---
 
-👉 **[Start your journey today!](https://techwithtim.net/dev)**  
-No experience needed—just your determination. Future-proof your career and unlock six-figure potential like many of our students have!  
+## Example Request (POST)
+
+```json
+{
+  "data": "My first API note"
+}
