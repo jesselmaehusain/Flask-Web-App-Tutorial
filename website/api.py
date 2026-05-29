@@ -46,3 +46,20 @@ def create_note():
         "id": new_note.id,
         "data": new_note.data
     }), 201
+
+
+@api.route('/notes/<int:id>', methods=['GET'])
+def get_note(id):
+
+    note = Note.query.get(id)
+
+    if not note:
+        return jsonify({
+            "error": "Note not found"
+        }), 404
+
+    return jsonify({
+        "id": note.id,
+        "data": note.data,
+        "user_id": note.user_id
+    }), 200
